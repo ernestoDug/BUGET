@@ -86,7 +86,7 @@ class App extends Component {
         <> {this.state.transactions.map((transaction) => (
           <div>
            <br></br>
-Label: {transaction.label},
+Label: {transaction.label}, 
 <p>
 Value: {transaction.value}
 </p>
