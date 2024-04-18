@@ -18,7 +18,7 @@ class Form extends Component {
     const {value} =    e.target;
 //  при зміні стану в інпуті відмалюється 
 this.setState ({
-    value
+    value 
 })
   };
 
