@@ -5,21 +5,25 @@ class Form extends Component {
     super();
     // стет напряму тіьки в кострукторі
     this.state = {
-      value: 0,
+      value: "",
     };
   }
 
   submiter = (e) => {
     e.preventDefault();
+    // в класах пропси збрігаються в зис пропс
+    // передали прокинутому пропсу функции   велью з стета
+    this.props.changer(this.state.value);
+    // console.log(1, this.state, 2, this.props);
   };
 
+  //   на інпут
   changer = (e) => {
-  
-    const {value} =    e.target;
-//  при зміні стану в інпуті відмалюється 
-this.setState ({
-    value 
-})
+    const { value } = e.target;
+    //  при зміні стану в інпуті відмалюється
+    this.setState({
+      value,
+    });
   };
 
   render() {

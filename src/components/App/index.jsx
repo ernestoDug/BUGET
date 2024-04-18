@@ -1,12 +1,10 @@
 import { Component } from "react";
 
-
 import Balance from "../Balance";
 import Tranactions from "../Transactions";
 import Form from "../Form";
 
-
-// ч1 2.04 +++++++++++++++++++++++++++++++++++
+// ч1 2.20 +++++++++++++++++++++++++++++++++++
 // const name = "Chudo";
 
 class App extends Component {
@@ -17,8 +15,8 @@ class App extends Component {
       transactions: [],
     };
     // фіксуємо зис байндемо його щоб не втратився контекст при клік
-    this.onIncrease = this.onIncrease.bind(this);
-    // в декрис ми беремо стірлочну функ і тому контекст завязуємо автоматично без байнд
+    this.changer = this.changer.bind(this);
+    // в  стірлочну функ у контекст завязуємо автоматично без байнд
   }
 
   // повторемо життевий цикл
@@ -44,54 +42,35 @@ class App extends Component {
   // return true;
   // }
   // завершили  повторемо життевий цикл
-  // +1
-  onIncrease() {
-    this.setState((state) => ({ 
-      balance: state.balance + 1,
-      transactions: [{
-        label: 'increase',
-        value: +1,
-      }, ...state.transactions],
-    }));
-  };
- 
-  // -1
-  onDecrease = () => {
-    this.setState((state) => ({ 
-      balance: state.balance - 1,
-      // створено новий масив для демутації 
-      transactions: [{
-        label: 'decrease',
-        value: -1,
-      }, ...state.transactions],
+
+  changer = (value) => {
+    // debugger
+    this.setState((state) => ({
+      balance: state.balance + +value,
+      transactions: [{ value, label: "ch" }, ...state.transactions],
     }));
   };
 
   render() {
-
     return (
       <>
         <Balance balance={this.state.balance}>Мій баланс:</Balance>
-
-        <Form/>
+        {/* прокинули пропсом функцію ормі
+після сабімту викликається чанжер тут з отриманими на формі параметрамаи  */}
+        <Form changer={this.changer} />
         {!this.state.transactions.length ? (
           <>
             {" "}
             <br></br> "Транзакції відсутні"
           </>
-          // меп создаёт новый массив 
         ) : (
+          // меп создаёт новый массив
           <>
-        <ul> 
-        <Tranactions
-        transactions={this.state.transactions}
-        />
-        </ul>
-      
-        </>
-        
-        
-                )}
+            <ul>
+              <Tranactions transactions={this.state.transactions} />
+            </ul>
+          </>
+        )}
       </>
     );
   }
