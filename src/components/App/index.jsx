@@ -1,8 +1,12 @@
 import { Component } from "react";
 
-import Balance from "../Balance";
 
-// ч1 1,47 +++++++++++++++++++++++++++++++++++
+import Balance from "../Balance";
+import Tranactions from "../Transactions";
+import Form from "../Form";
+
+
+// ч1 2.04 +++++++++++++++++++++++++++++++++++
 // const name = "Chudo";
 
 class App extends Component {
@@ -39,11 +43,8 @@ class App extends Component {
   // return nextState.balance < 5;
   // return true;
   // }
-
   // завершили  повторемо життевий цикл
-
   // +1
-
   onIncrease() {
     this.setState((state) => ({ 
       balance: state.balance + 1,
@@ -53,8 +54,7 @@ class App extends Component {
       }, ...state.transactions],
     }));
   };
-
-  
+ 
   // -1
   onDecrease = () => {
     this.setState((state) => ({ 
@@ -73,9 +73,7 @@ class App extends Component {
       <>
         <Balance balance={this.state.balance}>Мій баланс:</Balance>
 
-        <button onClick={this.onIncrease}> Додати 1 </button>
-
-        <button onClick={this.onDecrease}> Забрати 1 </button>
+        <Form/>
         {!this.state.transactions.length ? (
           <>
             {" "}
@@ -83,18 +81,13 @@ class App extends Component {
           </>
           // меп создаёт новый массив 
         ) : (
-        <> {this.state.transactions.map((transaction) => (
-          <div>
-           <br></br>
-Label: {transaction.label}, 
-<p>
-Value: {transaction.value}
-</p>
-          </div>
-
-        )    
-        ) 
-         }
+          <>
+        <ul> 
+        <Tranactions
+        transactions={this.state.transactions}
+        />
+        </ul>
+      
         </>
         
         
