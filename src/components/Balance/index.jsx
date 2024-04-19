@@ -1,3 +1,6 @@
+import PropTypes from 'prop-types';
+
+
 const Balance = ({ balance, children }) => {
   return (
     <>
@@ -11,5 +14,11 @@ const Balance = ({ balance, children }) => {
     </>
   );
 };
+
+// проптайпи
+Balance.propTypes = {
+  balance: PropTypes.number,
+};
+
 
 export default Balance;

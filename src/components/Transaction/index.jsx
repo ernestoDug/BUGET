@@ -1,3 +1,7 @@
+import PropTypes from 'prop-types';
+
+
+
 const Tranaction = ({label, value}) => {
   return (
     <li>
@@ -8,4 +12,8 @@ const Tranaction = ({label, value}) => {
   );
 };
 
+Tranaction.propTypes = {
+  label: PropTypes.string,
+  value: PropTypes.string,
+};
 export default Tranaction;

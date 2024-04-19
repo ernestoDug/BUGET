@@ -1,4 +1,6 @@
 import { Component } from "react";
+import PropTypes from 'prop-types';
+
 
 class Form extends Component {
   constructor() {
@@ -41,5 +43,11 @@ class Form extends Component {
     );
   }
 }
+
+// проптайпи
+Form.propTypes = {
+  value: PropTypes.string,
+changer: PropTypes.func.isRequired,
+};
 
 export default Form;
