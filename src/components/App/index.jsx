@@ -4,7 +4,7 @@ import Balance from "../Balance";
 import Tranactions from "../Transactions";
 import Form from "../Form";
 
-// ч1 2.40 +++++++++++++++++++++++++++++++++++
+// ч1 3 00\2 +++++++++++++++++++++++++++++++++++
 // const name = "Chudo";
 
 class App extends Component {
