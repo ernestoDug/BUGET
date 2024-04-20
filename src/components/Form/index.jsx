@@ -16,8 +16,11 @@ class Form extends Component {
     // в класах пропси збрігаються в зис пропс
     // передали прокинутому пропсу функции   велью з стета
     this.props.changer(this.state.value);
-    // console.log(1, this.state, 2, this.props);
-  };
+    // для очистки поля вводу пілся відправки 
+this.setState({
+  value: '',
+})  
+};
 
   //   на інпут
   changer = (e) => {

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import Tranaction from "../Transaction";
 
-const Transactions = ({ transactions }) =>
+const Transactions = ({ transactions = [] }) =>
   transactions.map((transaction) => (
     
       <Tranaction
@@ -15,11 +15,22 @@ const Transactions = ({ transactions }) =>
 
   ));
 
+// дефолтні пропси якщо буде щось не те передане то візьме дефолтне значення і омине помилку 
+// але краще дефолт прописувати прямо в пропсах 
+
+  // Transactions.defaultProps = {
+  //   transactions: []
+  // }
+
 // проптайпи
 Transactions.propTypes = {
+transactions: PropTypes.arrayOf(
+
+  PropTypes.shape({
   label: PropTypes.string,
   value: PropTypes.string,
-};
+})),
+}
 
   
 export default Transactions;
