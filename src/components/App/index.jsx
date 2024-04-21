@@ -1,8 +1,8 @@
 import { Component } from "react";
 
-import Balance from "../Balance";
-import Tranactions from "../Transactions";
-import Form from "../Form";
+import Balance from "../Balance/Balance";
+import Tranactions from "../Transactions/Transactions";
+import Form from "../Form/Form";
 
 // ч1 3 00\2 +++++++++++++++++++++++++++++++++++
 // const name = "Chudo";
