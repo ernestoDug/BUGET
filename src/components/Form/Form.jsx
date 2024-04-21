@@ -1,5 +1,6 @@
 import { Component } from "react";
 import PropTypes from 'prop-types';
+import { FormStyle, InputStyle, ButtonStyle } from './Form.module';
 
 
 class Form extends Component {
@@ -33,16 +34,16 @@ this.setState({
 
   render() {
     return (
-      <form action="" onSubmit={this.submiter}>
-        <input
+      <FormStyle action="" onSubmit={this.submiter}>
+        <InputStyle
           type="number"
           name="balance"
           placeholder="Сумма"
           value={this.state.value}
           onChange={this.changer}
         />
-        <button type="submit">Зберегти</button>
-      </form>
+        <ButtonStyle type="submit">Зберегти</ButtonStyle>
+      </FormStyle>
     );
   }
 }

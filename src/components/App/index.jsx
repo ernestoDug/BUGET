@@ -4,8 +4,10 @@ import Balance from "../Balance/Balance";
 import Tranactions from "../Transactions/Transactions";
 import Form from "../Form/Form";
 
-// ч1 3 00\2 +++++++++++++++++++++++++++++++++++
-// const name = "Chudo";
+import {DivNotTransactionStyle } from './Index.module';
+
+// ч1 3 20
+// 22/04 +++++++++++++++++++++++++++++++++++
 
 class App extends Component {
   constructor() {
@@ -61,14 +63,14 @@ class App extends Component {
         {!this.state.transactions.length ? (
           <>
             {" "}
-            <br></br> "Транзакції відсутні"
+            <br></br> <DivNotTransactionStyle><h4> "Транзакції відсутні"</h4></DivNotTransactionStyle>
           </>
         ) : (
           // меп создаёт новый массив
           <>
-            <ul>
+          
               <Tranactions transactions={this.state.transactions} />
-            </ul>
+   
           </>
         )}
       </>

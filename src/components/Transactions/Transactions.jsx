@@ -5,7 +5,6 @@ import Tranaction from "../Transaction/Transaction";
 import { UlStyle } from "./Transactions.module";
 
 const Transactions = ({ transactions = [] }) => (
-  
   <UlStyle>
     {transactions.map((transaction) => (
       <Tranaction
@@ -14,8 +13,8 @@ const Transactions = ({ transactions = [] }) => (
         value={transaction.value}
       />
     ))}
-      </UlStyle>
-      );
+  </UlStyle>
+);
 
 // дефолтні пропси якщо буде щось не те передане то візьме дефолтне значення і омине помилку
 // але краще дефолт прописувати прямо в пропсах
