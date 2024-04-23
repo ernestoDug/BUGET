@@ -13,6 +13,12 @@ export const LiStyle = styled.li`
   хочь і лається але працює 
   */
   background: ${({value}) => value <= 0 ? "#e06311" : "#FAAB1B"};
-  width: 30%;
+  max-width: 450px;
   box-shadow: 0px 4px 4px rgba(67, 66, 66, 0.04);
+  border: 2px dashed #151414;
+
 `;
+
+// це щоб в реат дев тул в компонентс замість лістайлед було кокнртне імя 
+// використ для тестів щбо зручніше назви вказувати 
+LiStyle.displayName = 'TransactionLiStyle';

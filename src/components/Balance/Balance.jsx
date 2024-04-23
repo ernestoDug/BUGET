@@ -1,16 +1,21 @@
-import PropTypes from 'prop-types';
-
+import PropTypes from "prop-types";
+import { H4BancrotStyle } from "./Balance.module";
 
 const Balance = ({ balance, children }) => {
   return (
     <>
-        { balance === 0 ?    <>  "Банкрот" <br></br> </> : 
-      <div>
-        "Міліонер" <br></br>
-        {children}
-        {balance}
-      </div>
-}
+      {balance === 0 ? (
+        <>
+          {" "}
+          <H4BancrotStyle> Ви банкрот</H4BancrotStyle> <br></br>{" "}
+        </>
+      ) : (
+        <div>
+          Ви міліонер <br></br>
+          {children}
+          {balance}
+        </div>
+      )}
     </>
   );
 };
@@ -19,6 +24,5 @@ const Balance = ({ balance, children }) => {
 Balance.propTypes = {
   balance: PropTypes.number,
 };
-
 
 export default Balance;
