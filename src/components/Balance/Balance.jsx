@@ -13,7 +13,8 @@ const Balance = ({ balance, children }) => {
         <div>
           Ви міліонер <br></br>
           {children}
-          {balance}
+          {/* прибрав щоб проп не виводився  */}
+          {/* {balance} */}
         </div>
       )}
     </>

@@ -1,13 +1,12 @@
 import { Component } from "react";
-import 'normalize.css';
+import "normalize.css";
 /* npm install normalize.css */
-
 
 import Balance from "../Balance/Balance";
 import Tranactions from "../Transactions/Transactions";
 import Form from "../Form/Form";
 
-import {H4NotTransactionStyle } from './Index.module';
+import { H4NotTransactionStyle, H4BalanceStyle } from "./App.module";
 
 // ч1 3 20
 // 22/04 +++++++++++++++++++++++++++++++++++
@@ -59,22 +58,20 @@ class App extends Component {
   render() {
     return (
       <>
-      
-        <Balance balance={this.state.balance}>Мій баланс:</Balance>
+        <Balance balance={this.state.balance}> <H4BalanceStyle> Мій баланс: {this.state.balance}</H4BalanceStyle></Balance>
         {/* прокинули пропсом функцію ормі
 після сабімту викликається чанжер тут з отриманими на формі параметрамаи  */}
         <Form changer={this.changer} />
         {!this.state.transactions.length ? (
           <>
             {" "}
-            <br></br> <H4NotTransactionStyle> Транзакції відсутні </H4NotTransactionStyle>
+            <br></br>{" "}
+            <H4NotTransactionStyle> Транзакції відсутні </H4NotTransactionStyle>
           </>
         ) : (
           // меп создаёт новый массив
           <>
-          
-              <Tranactions transactions={this.state.transactions} />
-   
+            <Tranactions transactions={this.state.transactions} />
           </>
         )}
       </>
