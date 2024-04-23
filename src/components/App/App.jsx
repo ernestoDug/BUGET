@@ -2,6 +2,7 @@ import { Component } from "react";
 import "normalize.css";
 /* npm install normalize.css */
 
+
 import Balance from "../Balance/Balance";
 import Tranactions from "../Transactions/Transactions";
 import Form from "../Form/Form";

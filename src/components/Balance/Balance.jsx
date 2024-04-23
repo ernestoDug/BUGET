@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { H4BancrotStyle } from "./Balance.module";
+import { H4BalanceStyle } from "../App/App.module";
 
 const Balance = ({ balance, children }) => {
   return (
@@ -7,11 +8,11 @@ const Balance = ({ balance, children }) => {
       {balance === 0 ? (
         <>
           {" "}
-          <H4BancrotStyle> Ви банкрот</H4BancrotStyle> <br></br>{" "}
+          <H4BancrotStyle> Ви банкрот</H4BancrotStyle>
         </>
       ) : (
         <div>
-          Ви міліонер <br></br>
+          <H4BalanceStyle> Ви міліонер </H4BalanceStyle>
           {children}
           {/* прибрав щоб проп не виводився  */}
           {/* {balance} */}
