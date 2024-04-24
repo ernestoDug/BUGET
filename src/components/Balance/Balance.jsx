@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { H4BancrotStyle } from "./Balance.module";
-import { H4BalanceStyle } from "../App/App.module";
+import { H4BalanceStyle } from "../../Pages/Home/Home.module";
 
 const Balance = ({ balance, children }) => {
   return (

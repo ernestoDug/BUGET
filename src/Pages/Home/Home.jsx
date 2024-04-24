@@ -1,18 +1,15 @@
 import { Component } from "react";
-import "normalize.css";
-/* npm install normalize.css */
 
+import Balance from "../../components/Balance/Balance";
+import Tranactions from "../../components/Transactions/Transactions";
+import Form from "../../components/Form/Form";
 
-import Balance from "../Balance/Balance";
-import Tranactions from "../Transactions/Transactions";
-import Form from "../Form/Form";
+import { H4NotTransactionStyle, H4BalanceStyle } from "./Home.module";
 
-import { H4NotTransactionStyle, H4BalanceStyle } from "./App.module";
+// ч1 3 30
+// 24/04 +++++++++++++++++++++++++++++++++++
 
-// ч1 3 20
-// 22/04 +++++++++++++++++++++++++++++++++++
-
-class App extends Component {
+class Home extends Component {
   constructor() {
     super();
     this.state = {
@@ -59,7 +56,10 @@ class App extends Component {
   render() {
     return (
       <>
-        <Balance balance={this.state.balance}> <H4BalanceStyle> Мій баланс: {this.state.balance}</H4BalanceStyle></Balance>
+        <Balance balance={this.state.balance}>
+          {" "}
+          <H4BalanceStyle> Мій баланс: {this.state.balance}</H4BalanceStyle>
+        </Balance>
         {/* прокинули пропсом функцію ормі
 після сабімту викликається чанжер тут з отриманими на формі параметрамаи  */}
         <Form changer={this.changer} />
@@ -80,4 +80,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Home;

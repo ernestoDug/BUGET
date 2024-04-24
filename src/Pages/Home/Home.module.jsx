@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 
-
 // npm i @emotion/react
-// npm i @emotion/styled @emotion/reactn
+// npm i @emotion/styled @emotion/react
 
 
 export const  H4NotTransactionStyle = styled.h4 `
