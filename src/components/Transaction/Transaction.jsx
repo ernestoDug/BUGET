@@ -1,14 +1,28 @@
 import PropTypes from "prop-types";
+import { motion } from 'framer-motion';
+// npm install framer-motion
+
 
 import { LiStyle } from './Transaction.module';
 
 const Tranaction = ({ label = "", value = 0 }) => {
   return (
-    // пропсом велю дали стайл компоненту щоб колір змінбвати в стилях
+    <motion.div
+    className="box"
+    initial={{ opacity: 0, scale: 0.5 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{
+      duration: 0.8,
+      delay: 0.5,
+      ease: [0, 0.71, 0.2, 1.01],
+    }}
+  >
+    {/* // пропсом велю дали стайл компоненту щоб колір змінбвати в стилях */}
     <LiStyle value={value}>
         <br></br>
         Label: {label},<p>Value: {value}</p>
     </LiStyle>
+    </motion.div>
   );
 };
 

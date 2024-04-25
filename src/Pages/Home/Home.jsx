@@ -1,8 +1,14 @@
 import { Component } from "react";
 
+
+
 import Balance from "../../components/Balance/Balance";
 import Tranactions from "../../components/Transactions/Transactions";
 import Form from "../../components/Form/Form";
+// import Header from "../../components/Header/Header";
+
+
+
 
 import { H4NotTransactionStyle, H4BalanceStyle } from "./Home.module";
 
@@ -56,6 +62,7 @@ class Home extends Component {
   render() {
     return (
       <>
+     
         <Balance balance={this.state.balance}>
           {" "}
           <H4BalanceStyle> Мій баланс: {this.state.balance}</H4BalanceStyle>
