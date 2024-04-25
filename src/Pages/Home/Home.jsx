@@ -1,11 +1,10 @@
 import { Component } from "react";
-
+import { motion } from 'framer-motion';
 
 
 import Balance from "../../components/Balance/Balance";
 import Tranactions from "../../components/Transactions/Transactions";
 import Form from "../../components/Form/Form";
-// import Header from "../../components/Header/Header";
 
 
 
@@ -62,7 +61,19 @@ class Home extends Component {
   render() {
     return (
       <>
-     
+      {/* для анімашки  */}
+      <motion.div
+      className="box"
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.8,
+        delay: 0.5,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
+    >
+
+  
         <Balance balance={this.state.balance}>
           {" "}
           <H4BalanceStyle> Мій баланс: {this.state.balance}</H4BalanceStyle>
@@ -82,6 +93,7 @@ class Home extends Component {
             <Tranactions transactions={this.state.transactions} />
           </>
         )}
+      </motion.div>
       </>
     );
   }

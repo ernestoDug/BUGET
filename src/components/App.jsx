@@ -1,22 +1,20 @@
-// import { lazy } from "react";
+import { lazy } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // npm install react-router-dom
 
-import Home   from '../Pages/Home/Home';
-import About from '../Pages/About/About';
-import Statistics from '../Pages/Statistics/Statistics';
 import Layout from "./Layout";
 
 
 import "normalize.css";
 /* npm install normalize.css */
 
-// import ErrorPage from "../error-page";
+import ErrorPage from "../error-page";
 
 // Щоб відкласти завантаження коду цього компонента до його першого відтворення
 // щоб відкладений компонент, який ви імпортуєте, був експортований як defaultекспорт.
-
-
+const Home = lazy(() => import('./../Pages/Home/Home'));
+const About = lazy(() => import('./../Pages/About/About'));
+const Statistics = lazy(() => import('./../Pages/Statistics/Statistics'));
 // ч1 3 30
 // 24/04 +++++++++++++++++++++++++++++++++++
 
@@ -28,7 +26,7 @@ const App = () => {
           <Route>
         
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
+            <Route index element={<ErrorPage />} />
 
             <Route path="about" element={<About />} />
 
