@@ -13,8 +13,6 @@ padding: 20px;
   box-shadow: 0px 4px 4px rgba(67, 66, 66, 0.04);  
   border: 2px dashed #151414;
 
-
-
 `;
 
 

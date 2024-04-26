@@ -5,7 +5,7 @@ import { H4BalanceStyle } from "../../Pages/Home/Home.module";
 const Balance = ({ balance, children }) => {
   return (
     <>
-      {balance === 0 ? (
+      {balance <= 0 ? (
         <>
           {" "}
           <H4BancrotStyle> Ви банкрот</H4BancrotStyle>
