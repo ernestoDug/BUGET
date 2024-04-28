@@ -8,7 +8,6 @@ import Form from "../../components/Form/Form";
 
 
 
-
 import { H4NotTransactionStyle, H4BalanceStyle } from "./Home.module";
 
 // ч1 3 30
@@ -54,7 +53,7 @@ class Home extends Component {
     // debugger
     this.setState((state) => ({
       balance: state.balance + +value,
-      transactions: [{ value, label: "ch" }, ...state.transactions],
+      transactions: [{ value, label: "це в хоме в стані тр" }, ...state.transactions],
     }));
   };
 

@@ -1,9 +1,13 @@
 import PropTypes from "prop-types";
 import { motion } from 'framer-motion';
 // npm install framer-motion
-
-
 import { LiStyle } from './Transaction.module';
+
+// npx storybook@latest init
+// npm run storybook
+// краще компонент там створити протестувати а потім вже вставити собі 
+// зразок в навва сторис джиек икс тільки воно ніхрена не працює
+
 
 const Tranaction = ({ label = "", value = 0 }) => {
   return (
@@ -20,7 +24,7 @@ const Tranaction = ({ label = "", value = 0 }) => {
     {/* // пропсом велю дали стайл компоненту щоб колір змінбвати в стилях */}
     <LiStyle value={value}>
         <br></br>
-        Label: {label},<p>Value: {value}</p>
+        Статус: {label},<p>Значення: {value}</p>
     </LiStyle>
     </motion.div>
   );
