@@ -9,8 +9,9 @@ const Transactions = ({ transactions = [] }) => (
     {transactions.map((transaction) => (
       <Tranaction
         key={nanoid()}
-        label={transaction.label}
+        comment={transaction.comment}
         value={transaction.value}
+        date={transaction.date}
       />
     ))}
   </UlStyle>

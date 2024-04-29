@@ -9,7 +9,7 @@ import { LiStyle } from './Transaction.module';
 // зразок в навва сторис джиек икс тільки воно ніхрена не працює
 
 
-const Tranaction = ({ label = "", value = 0 }) => {
+const Tranaction = ({ value = 0, date = "",  comment = ""}) => {
   return (
     <motion.div
     className="box"
@@ -24,8 +24,11 @@ const Tranaction = ({ label = "", value = 0 }) => {
     {/* // пропсом велю дали стайл компоненту щоб колір змінбвати в стилях */}
     <LiStyle value={value}>
         <br></br>
-        Статус: {label},<p>Значення: {value}</p>
-    </LiStyle>
+        <p>Значення: {value}</p> 
+        <p>Дата: {date}</p>
+        <p>Кометар: {comment}</p>
+         
+          </LiStyle>
     </motion.div>
   );
 };
@@ -39,7 +42,7 @@ const Tranaction = ({ label = "", value = 0 }) => {
 
 // проптайп
 Tranaction.propTypes = {
-  label: PropTypes.string,
+  comment: PropTypes.string,
   value: PropTypes.string,
 };
 export default Tranaction;

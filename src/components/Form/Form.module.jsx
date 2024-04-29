@@ -4,6 +4,9 @@ import styled from "@emotion/styled";
 
 export const FormStyle = styled.form`
   max-width: 350px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 12px;
   margin: 0;
   padding: 20px;
   border-radius: 7px;
@@ -52,6 +55,23 @@ export const ButtonStyle = styled.button`
   }
 `;
 
+export const TextAreaStyle = styled.textarea`
+ background-color: #f0d095;
+  border-radius: 7px;
+  box-shadow: 0px 4px 4px rgba(67, 66, 66, 0.04);
+  resize: none;
+  cursor: pointer;
+  transition: background-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+:hover,
+:focus
+{
+  background-color: #eadec8;
+
+}
+`
+
 FormStyle.displayName = "FormStyleStyle";
 InputStyle.displayName = "InputStyle";
 ButtonStyle.displayName = "ButtonStyle";
+TextAreaStyle.displayName = "TextAreaStyle";
+

@@ -1,12 +1,9 @@
 import { Component } from "react";
-import { motion } from 'framer-motion';
-
+import { motion } from "framer-motion";
 
 import Balance from "../../components/Balance/Balance";
 import Tranactions from "../../components/Transactions/Transactions";
 import Form from "../../components/Form/Form";
-
-
 
 import { H4NotTransactionStyle, H4BalanceStyle } from "./Home.module";
 
@@ -49,50 +46,52 @@ class Home extends Component {
   // }
   // завершили  повторемо життевий цикл
 
-  changer = (value) => {
+  changer = (value, date, comment) => {
     // debugger
     this.setState((state) => ({
       balance: state.balance + +value,
-      transactions: [{ value, label: "це в хоме в стані тр" }, ...state.transactions],
+      transactions: [{ value, date, comment }, ...state.transactions],
     }));
+
   };
 
   render() {
     return (
       <>
-      {/* для анімашки  */}
-      <motion.div
-      className="box"
-      initial={{ opacity: 0, scale: 0.5 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{
-        duration: 0.8,
-        delay: 0.5,
-        ease: [0, 0.71, 0.2, 1.01],
-      }}
-    >
-
-  
-        <Balance balance={this.state.balance}>
-          {" "}
-          <H4BalanceStyle> Мій баланс: {this.state.balance}</H4BalanceStyle>
-        </Balance>
-        {/* прокинули пропсом функцію ормі
-після сабімту викликається чанжер тут з отриманими на формі параметрамаи  */}
-        <Form changer={this.changer} />
-        {!this.state.transactions.length ? (
-          <>
+        {/* для анімашки  */}
+        <motion.div
+          className="box"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{
+            duration: 0.8,
+            delay: 0.5,
+            ease: [0, 0.71, 0.2, 1.01],
+          }}
+        >
+          <Balance balance={this.state.balance}>
             {" "}
-            <br></br>{" "}
-            <H4NotTransactionStyle> Транзакції відсутні </H4NotTransactionStyle>
-          </>
-        ) : (
-          // меп создаёт новый массив
-          <>
-            <Tranactions transactions={this.state.transactions} />
-          </>
-        )}
-      </motion.div>
+            <H4BalanceStyle> Мій баланс: {this.state.balance}</H4BalanceStyle>
+          </Balance>
+          {/* прокинули пропсом функцію формі
+           */}
+          <Form changer={this.changer} />
+          {!this.state.transactions.length ? (
+            <>
+              {" "}
+              <br></br>{" "}
+              <H4NotTransactionStyle>
+                {" "}
+                Транзакції відсутні{" "}
+              </H4NotTransactionStyle>
+            </>
+          ) : (
+            // меп создаёт новый массив
+            <>
+              <Tranactions transactions={this.state.transactions} />
+            </>
+          )}
+        </motion.div>
       </>
     );
   }

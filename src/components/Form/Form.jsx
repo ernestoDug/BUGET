@@ -1,6 +1,6 @@
 import { Component } from "react";
 import PropTypes from 'prop-types';
-import { FormStyle, InputStyle, ButtonStyle } from './Form.module';
+import { FormStyle, InputStyle, ButtonStyle, TextAreaStyle } from './Form.module';
 // npx storybook@latest init
 // npm run storybook
 // краще компонент там створити протестувати а потім вже вставити собі 
@@ -11,8 +11,8 @@ class Form extends Component {
     super();
     // стет напряму тіьки в кострукторі
     this.state = {
-      value: "",
       date: new Date().toISOString().substring(0, 10),
+      value: "",
       comment: "",
     };
   }
@@ -20,12 +20,13 @@ class Form extends Component {
   submiter = (e) => {
     e.preventDefault();
     // в класах пропси збрігаються в зис пропс
-    // передали прокинутому пропсу функции   велью з стета
-    this.props.changer(this.state.value);
+    // передали прокинутому пропсу функции   cстети важливий порядок 
+    this.props.changer(this.state.value, this.state.date,  this.state.comment);
     // для очистки поля вводу пілся відправки 
 this.setState({
-  balance: '',
+  value: '',
   comment: '',
+  date: '',
 })  
 };
 
@@ -57,13 +58,14 @@ this.setState({
           value={this.state.date}
           onChange={this.changer}
         />
-        <textarea name="comment" id="" cols="30" rows="10"
+
+        <TextAreaStyle name="comment" id="" cols="30" rows="10"
         placeholder="Залиште коментар"
         value={this.state.comment}
         onChange={this.changer}
         >
 
-        </textarea>
+        </TextAreaStyle>
         <ButtonStyle type="submit">Зберегти</ButtonStyle>
       </FormStyle>
     );
