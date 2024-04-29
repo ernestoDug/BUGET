@@ -11,8 +11,8 @@ class Form extends Component {
     super();
     // стет напряму тіьки в кострукторі
     this.state = {
-      date: new Date().toISOString().substring(0, 10),
       value: "",
+      date: new Date().toISOString().substring(0, 10),
       comment: "",
     };
   }
@@ -20,13 +20,13 @@ class Form extends Component {
   submiter = (e) => {
     e.preventDefault();
     // в класах пропси збрігаються в зис пропс
-    // передали прокинутому пропсу функции   cстети важливий порядок 
+    // передали прокинутому пропсу функции   cстети
     this.props.changer(this.state.value, this.state.date,  this.state.comment);
     // для очистки поля вводу пілся відправки 
 this.setState({
   value: '',
   comment: '',
-  date: '',
+  
 })  
 };
 
