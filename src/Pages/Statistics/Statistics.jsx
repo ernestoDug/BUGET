@@ -1,4 +1,12 @@
+// 2 20 03/05 
+
+
+// для краисвої появи 
 import { motion } from 'framer-motion';
+
+import Counter from '../../components/Counter/Counter';
+import {H4StepStyle} from '../../components/Counter/Counter.module'
+
 
 
 const Statistics = () => {
@@ -13,7 +21,11 @@ const Statistics = () => {
           ease: [0, 0.71, 0.2, 1.01],
         }}
       >
-        "Statistics"
+        <H4StepStyle>
+         Підіб'ємо статистику
+          </H4StepStyle>
+      <Counter/>
+
         </motion.div>
     )
 };

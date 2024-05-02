@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { motion } from "framer-motion";
+import { nanoid } from "nanoid";
 
 import Balance from "../../components/Balance/Balance";
 import Tranactions from "../../components/Transactions/Transactions";
@@ -7,8 +8,9 @@ import Form from "../../components/Form/Form";
 
 import { H4NotTransactionStyle, H4BalanceStyle } from "./Home.module";
 
-// ч1 3 30
-// 24/04 +++++++++++++++++++++++++++++++++++
+import { getItems, addItem } from "../../utils/indexdb";
+
+
 
 class Home extends Component {
   constructor() {
@@ -30,6 +32,18 @@ class Home extends Component {
   // this.setState({ balance });
   // }
 
+  componentDidMount() {
+    getItems()
+      .then((transactions) => {
+        this.setState({
+          transactions,
+        });
+      })
+      .catch((e) => {
+        debugger;
+      });
+  }
+
   // componentWillUnmount() {
   // сетимо перед закриттямb хоча воно на спрауює але так заносимо в сторидж
   // window.localStorage.setItem("balance", JSON.stringify(this.state.balance));
@@ -47,12 +61,15 @@ class Home extends Component {
   // завершили  повторемо життевий цикл
 
   changer = (value, date, comment) => {
+    // id використовується я ключ до бази глянь в утилсах индекс дб**
+    const transaction = { value, date, comment, id: nanoid(), };
+
     // debugger
     this.setState((state) => ({
       balance: state.balance + +value,
-      transactions: [{ value, date, comment }, ...state.transactions],
+      transactions: [transaction, ...state.transactions],
     }));
-
+    addItem(transaction);
   };
 
   render() {
