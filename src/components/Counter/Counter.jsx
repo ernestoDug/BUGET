@@ -5,19 +5,28 @@ import { useState } from "react"
 
 const Counter = () => {
     const [clicks, setClicks] = useState(0);
-    const [step, setStep] = useState(0);
+        const [step, setStep] = useState("");
 
+    const submiterCounter = (e) => {
+        e.preventDefault();
+       
+    }
+
+    const changerCounter = (e)=> 
+ setStep(+(e.target.value))
+
+    
     return (
         <>
 <H5StepStyle>Лічильник {clicks}</H5StepStyle>
-<FormStyleStatisttics>
+<FormStyleStatisttics onSubmit={submiterCounter}>
 <ButtonStepStyle onClick= {() => setClicks(clicks +step)} >Клацалка </ButtonStepStyle>
 <InputStatisticsStyle
           type="number"
           name="step"
           placeholder="Задайте крок"
           value={step}
-          onChange={(e)=> setStep(e.target.value)}
+          onChange={changerCounter}
         />
 </FormStyleStatisttics>
 </>
