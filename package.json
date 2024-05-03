@@ -18,6 +18,7 @@
     "react-error-boundary": "^4.0.13",
     "react-router-dom": "^6.23.0",
     "react-scripts": "5.0.1",
+    "react-toastify": "^10.0.5",
     "web-vitals": "^3.4.0"
   },
   "scripts": {
@@ -27,7 +28,7 @@
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-          "test": "jest"
+    "test": "jest"
   },
   "eslintConfig": {
     "extends": [
