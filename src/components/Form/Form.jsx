@@ -1,81 +1,105 @@
-import { Component } from "react";
-import PropTypes from 'prop-types';
-import { FormStyle, InputStyle, ButtonStyle, TextAreaStyle } from './Form.module';
+import PropTypes from "prop-types";
+import { useState } from "react";
+
+import {
+  FormStyle,
+  InputStyle,
+  ButtonStyle,
+  TextAreaStyle,
+} from "./Form.module";
 // npx storybook@latest init
 // npm run storybook
-// краще компонент там створити протестувати а потім вже вставити собі 
+// краще компонент там створити протестувати а потім вже вставити собі
 // зразок в навва сторис джиек икс тільки воно ніхрена не працює
 
-class Form extends Component {
-  constructor() {
-    super();
-    // стет напряму тіьки в кострукторі
-    this.state = {
-      value: "",
-      date: new Date().toISOString().substring(0, 10),
-      comment: "",
-    };
-  }
+const Form = ({ changer }) => {
+  // const [form, setForm] = useState({
+  //   value: "",
+  //   date: new Date().toISOString().substring(0, 10),
+  //   comment: "",
+  // });
 
-  submiter = (e) => {
+  const [value, setValue] = useState('');
+  const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
+  const [comment, setComment] = useState('');
+
+
+
+  const submiter = (e) => {
     e.preventDefault();
     // в класах пропси збрігаються в зис пропс
     // передали прокинутому пропсу функции   cстети
-    this.props.changer(this.state.value, this.state.date,  this.state.comment);
-    // для очистки поля вводу пілся відправки 
-this.setState({
-  value: '',
-  comment: '',
-  
-})  
-};
 
-  //   на інпут
-  changer = (e) => {
-    // он ченджер опрауьовує так багато полів 
+    changer(value,
+      date,
+      comment);
+    // для очистки поля вводу пілся відправки
+    setValue('');
+    setDate('');
+    setComment('');
+      };
+
+  // обранник універсальний
+  const changerForm = (e) => {
     const { value, name } = e.target;
-    //  при зміні стану в інпуті відмалюється
-    this.setState({
-      [name]: name === 'balance' ? +value : value,
-    });
+
+    switch (name) {
+      case 'value': {
+        setValue(value);
+        break;
+      } 
     
-  };
-
-  render() {
-    return (
-      <FormStyle action="" onSubmit={this.submiter}>
-        <InputStyle
-          type="number"
-          name="value"
-          placeholder="Сумма"
-          value={this.state.value}
-          onChange={this.changer}
-        />
-         <InputStyle
-          type="date"
-          name="date"
-          placeholder="чч.мм.рр"
-          value={this.state.date}
-          onChange={this.changer}
-        />
-
-        <TextAreaStyle name="comment" id="" cols="30" rows="10"
-        placeholder="Залиште коментар"
-        value={this.state.comment}
-        onChange={this.changer}
-        >
-
-        </TextAreaStyle>
-        <ButtonStyle type="submit">Зберегти</ButtonStyle>
-      </FormStyle>
-    );
+      case 'date': {
+        setDate(value);
+        break;
+      } 
+      
+      case 'comment': {
+        setComment(value);
+        break;
+      } 
+      default:
+        return;
+    };
   }
-}
+
+
+
+
+  return (
+    <FormStyle action="" onSubmit={submiter}>
+      <InputStyle
+        type="number"
+        name="value"
+        placeholder="Сумма"
+        value={value}
+        onChange={changerForm}
+      />
+      <InputStyle
+        type="date"
+        name="date"
+        placeholder="чч.мм.рр"
+        value={date}
+        onChange={changerForm}
+      />
+
+      <TextAreaStyle
+        name="comment"
+        id=""
+        cols="30"
+        rows="10"
+        placeholder="Залиште коментар"
+        onChange={changerForm}
+      ></TextAreaStyle>
+      <ButtonStyle type="submit">Зберегти</ButtonStyle>
+    </FormStyle>
+  );
+};
 
 // проптайпи
 Form.propTypes = {
   value: PropTypes.string,
-changer: PropTypes.func.isRequired,
+  changer: PropTypes.func.isRequired,
 };
 
 export default Form;
