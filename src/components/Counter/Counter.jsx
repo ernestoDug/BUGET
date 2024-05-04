@@ -13,7 +13,14 @@ const Counter = () => {
     }
 
     const changerCounter = (e)=> 
- setStep(+(e.target.value))
+ setStep(+(e.target.value));
+
+    const showValue = () => {
+
+        setTimeout(() => {
+            alert(clicks)
+        }, 3000);
+    }
 
     
     return (
@@ -21,6 +28,8 @@ const Counter = () => {
 <H5StepStyle>Лічильник {clicks}</H5StepStyle>
 <FormStyleStatisttics onSubmit={submiterCounter}>
 <ButtonStepStyle onClick= {() => setClicks(clicks +step)} >Клацалка </ButtonStepStyle>
+<ButtonStepStyle onClick= {showValue} >Покажи значення </ButtonStepStyle>
+
 <InputStatisticsStyle
           type="number"
           name="step"
