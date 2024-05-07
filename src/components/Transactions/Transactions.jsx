@@ -29,7 +29,7 @@ Transactions.propTypes = {
   transactions: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.string,
-      value: PropTypes.string,
+      value: PropTypes.number,
     })
   ),
 };

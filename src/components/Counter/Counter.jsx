@@ -27,7 +27,7 @@ const Counter = () => {
         <>
 <H5StepStyle>Лічильник {clicks}</H5StepStyle>
 <FormStyleStatisttics onSubmit={submiterCounter}>
-<ButtonStepStyle onClick= {() => setClicks(clicks +step)} >Клацалка </ButtonStepStyle>
+<ButtonStepStyle onClick= {() => setClicks(clicks + +step)} >Клацалка </ButtonStepStyle>
 <ButtonStepStyle onClick= {showValue} >Покажи значення </ButtonStepStyle>
 
 <InputStatisticsStyle

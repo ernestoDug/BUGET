@@ -1,34 +1,32 @@
-import PropTypes from "prop-types";
-import { motion } from 'framer-motion';
+// import PropTypes from "prop-types";
+import { motion } from "framer-motion";
 // npm install framer-motion
-import { LiStyle } from './Transaction.module';
+import { LiStyle } from "./Transaction.module";
 
 // npx storybook@latest init
 // npm run storybook
-// краще компонент там створити протестувати а потім вже вставити собі 
+// краще компонент там створити протестувати а потім вже вставити собі
 // зразок в навва сторис джиек икс тільки воно ніхрена не працює
 
-
-const Tranaction = ({ value = 0, date = "",  comment = ""}) => {
+const Tranaction = ({ value = 0, date = "", comment = "" }) => {
   return (
     <motion.div
-    className="box"
-    initial={{ opacity: 0, scale: 0.5 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{
-      duration: 0.8,
-      delay: 0.5,
-      ease: [0, 0.71, 0.2, 1.01],
-    }}
-  >
-    {/* // пропсом велю дали стайл компоненту щоб колір змінбвати в стилях */}
-    <LiStyle value={value}>
+      className="box"
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{
+        duration: 0.8,
+        delay: 0.5,
+        ease: [0, 0.71, 0.2, 1.01],
+      }}
+    >
+      {/* // пропсом велю дали стайл компоненту щоб колір змінбвати в стилях */}
+      <LiStyle value={value}>
         <br></br>
-        <p>Значення: {value}</p> 
+        <p>Значення: {value}</p>
         <p>Дата: {date}</p>
         <p>Кометар: {comment}</p>
-         
-          </LiStyle>
+      </LiStyle>
     </motion.div>
   );
 };
@@ -41,8 +39,8 @@ const Tranaction = ({ value = 0, date = "",  comment = ""}) => {
 // }
 
 // проптайп
-Tranaction.propTypes = {
-  comment: PropTypes.string,
-  value: PropTypes.string,
-};
+// Tranaction.propTypes = {
+//   comment: PropTypes.string,
+//   value: PropTypes.number,
+// };
 export default Tranaction;

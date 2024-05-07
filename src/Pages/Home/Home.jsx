@@ -10,8 +10,6 @@ import { H4NotTransactionStyle, H4BalanceStyle } from "./Home.module";
 
 import { getItems, addItem } from "../../utils/indexdb";
 
-
-
 class Home extends Component {
   constructor() {
     super();
@@ -62,7 +60,7 @@ class Home extends Component {
 
   changer = (value, date, comment) => {
     // id використовується я ключ до бази глянь в утилсах индекс дб**
-    const transaction = { value, date, comment, id: nanoid(), };
+    const transaction = { value: +value, date, comment, id: nanoid() };
 
     // debugger
     this.setState((state) => ({
@@ -70,6 +68,7 @@ class Home extends Component {
       transactions: [transaction, ...state.transactions],
     }));
     addItem(transaction);
+    console.log(this.state.transactions, 999);
   };
 
   render() {
@@ -103,7 +102,6 @@ class Home extends Component {
               </H4NotTransactionStyle>
             </>
           ) : (
-            // меп создаёт новый массив
             <>
               <Tranactions transactions={this.state.transactions} />
             </>

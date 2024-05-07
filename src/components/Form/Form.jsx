@@ -19,52 +19,44 @@ const Form = ({ changer }) => {
   //   comment: "",
   // });
 
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
-  const [comment, setComment] = useState('');
-
-
+  const [comment, setComment] = useState("");
 
   const submiter = (e) => {
     e.preventDefault();
     // в класах пропси збрігаються в зис пропс
     // передали прокинутому пропсу функции   cстети
 
-    changer(value,
-      date,
-      comment);
+    changer(value, date, comment);
     // для очистки поля вводу пілся відправки
-    setValue('');
-    setDate('');
-    setComment('');
-      };
+    setValue("");
+    setComment("");
+  };
 
   // обранник універсальний
   const changerForm = (e) => {
     const { value, name } = e.target;
 
     switch (name) {
-      case 'value': {
+      case "value": {
         setValue(value);
         break;
-      } 
-    
-      case 'date': {
+      }
+
+      case "date": {
         setDate(value);
         break;
-      } 
-      
-      case 'comment': {
+      }
+
+      case "comment": {
         setComment(value);
         break;
-      } 
+      }
       default:
         return;
-    };
-  }
-
-
-
+    }
+  };
 
   return (
     <FormStyle action="" onSubmit={submiter}>
