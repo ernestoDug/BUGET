@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { motion } from "framer-motion";
 import { nanoid } from "nanoid";
+import { useState, useEffect } from "react";
 
 import Balance from "../../components/Balance/Balance";
 import Tranactions from "../../components/Transactions/Transactions";
@@ -10,106 +11,73 @@ import { H4NotTransactionStyle, H4BalanceStyle } from "./Home.module";
 
 import { getItems, addItem } from "../../utils/indexdb";
 
-class Home extends Component {
-  constructor() {
-    super();
-    this.state = {
-      balance: 0,
-      transactions: [],
-    };
-    // фіксуємо зис байндемо його щоб не втратився контекст при клік
-    this.changer = this.changer.bind(this);
-    // в  стірлочну функ у контекст завязуємо автоматично без байнд
-  }
+const Home = () => {
+  const [balance, setBalance] = useState(0);
+  const [transactions, setTtransactions] = useState([]);
 
-  // повторемо життевий цикл
-  // componentDidMount() {
-  // отримаємо з сторидж
-  // const balance = JSON.parse(window.localStorage.getItem("balance"));
-  // сетемо в стан з локал сторидж
-  // this.setState({ balance });
-  // }
-
-  componentDidMount() {
+  useEffect(() => {
+    // з бази
     getItems()
-      .then((transactions) => {
-        this.setState({
-          transactions,
-        });
+      .then((items) => {
+        setTtransactions(items);
       })
       .catch((e) => {
         debugger;
       });
-  }
+  }, [setTtransactions]);
+  // пустий масив залежностей спрацюю раз при монтуванні
 
-  // componentWillUnmount() {
-  // сетимо перед закриттямb хоча воно на спрауює але так заносимо в сторидж
+  // так заносимо в сторидж
   // window.localStorage.setItem("balance", JSON.stringify(this.state.balance));
   // }
 
-  // shouldComponentUpdate (nextProps, nextState) {
-
-  // фалс тобто не треба перерндувати при зміні стейта
-  // return false
-
-  // буде перерендувати поки баланс менше 5 а потім стейт змінються але не рендериться
-  // return nextState.balance < 5;
-  // return true;
-  // }
-  // завершили  повторемо життевий цикл
-
-  changer = (value, date, comment) => {
+  const changer = (value, date, comment) => {
     // id використовується я ключ до бази глянь в утилсах индекс дб**
     const transaction = { value: +value, date, comment, id: nanoid() };
 
-    // debugger
-    this.setState((state) => ({
-      balance: state.balance + +value,
-      transactions: [transaction, ...state.transactions],
-    }));
+    setTtransactions([transaction, ...transactions]);
+
+    setBalance(balance + +value);
+
+    // до бази 
     addItem(transaction);
-    console.log(this.state.transactions, 999);
+    // console.log(transactions, 999);
   };
 
-  render() {
-    return (
-      <>
-        {/* для анімашки  */}
-        <motion.div
-          className="box"
-          initial={{ opacity: 0, scale: 0.5 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{
-            duration: 0.8,
-            delay: 0.5,
-            ease: [0, 0.71, 0.2, 1.01],
-          }}
-        >
-          <Balance balance={this.state.balance}>
+  return (
+    <>
+      {/* для анімашки  */}
+      <motion.div
+        className="box"
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{
+          duration: 0.8,
+          delay: 0.5,
+          ease: [0, 0.71, 0.2, 1.01],
+        }}
+      >
+        <Balance balance={balance}>
+          {" "}
+          <H4BalanceStyle> Мій баланс: {balance}</H4BalanceStyle>
+        </Balance>
+        {/* прокинули пропсом функцію формі
+         */}
+        <Form changer={changer} />
+        {!transactions.length ? (
+          <>
             {" "}
-            <H4BalanceStyle> Мій баланс: {this.state.balance}</H4BalanceStyle>
-          </Balance>
-          {/* прокинули пропсом функцію формі
-           */}
-          <Form changer={this.changer} />
-          {!this.state.transactions.length ? (
-            <>
-              {" "}
-              <br></br>{" "}
-              <H4NotTransactionStyle>
-                {" "}
-                Транзакції відсутні{" "}
-              </H4NotTransactionStyle>
-            </>
-          ) : (
-            <>
-              <Tranactions transactions={this.state.transactions} />
-            </>
-          )}
-        </motion.div>
-      </>
-    );
-  }
-}
+            <br></br>{" "}
+            <H4NotTransactionStyle> Транзакції відсутні </H4NotTransactionStyle>
+          </>
+        ) : (
+          <>
+            <Tranactions transactions={transactions} />
+          </>
+        )}
+      </motion.div>
+    </>
+  );
+};
 
 export default Home;

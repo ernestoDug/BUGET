@@ -1,4 +1,4 @@
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 // npm install framer-motion
 import { LiStyle } from "./Transaction.module";
@@ -39,8 +39,8 @@ const Tranaction = ({ value = 0, date = "", comment = "" }) => {
 // }
 
 // проптайп
-// Tranaction.propTypes = {
-//   comment: PropTypes.string,
-//   value: PropTypes.number,
-// };
+Tranaction.propTypes = {
+  comment: PropTypes.string,
+  value: PropTypes.number,
+};
 export default Tranaction;

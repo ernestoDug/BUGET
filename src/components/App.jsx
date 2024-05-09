@@ -1,7 +1,7 @@
 import React from "react";
 import { lazy } from "react";
 
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // npm install react-router-dom
@@ -45,6 +45,8 @@ const  App = () =>  {
   });
     // the side effect will only run when the props or state changed
  }, [ ])
+
+//  10/05 24 58 мин
 
 
   return (

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
  import { H5StepStyle, ButtonStepStyle, FormStyleStatisttics, InputStatisticsStyle} from './Counter.module'
 
@@ -22,6 +22,12 @@ const Counter = () => {
         }, 3000);
     }
 
+    useEffect(()=> {
+        // передали функцію для збільшення преввелью попердеоного значення кроку щоб
+        // в масиіі заленостей не було степу бо буде цикл бескнечний
+        setStep( (prevValue) => prevValue +1);
+
+    }, [ setStep]);
     
     return (
         <>
