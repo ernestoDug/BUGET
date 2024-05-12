@@ -1,4 +1,3 @@
-import { Component } from "react";
 import { motion } from "framer-motion";
 import { nanoid } from "nanoid";
 import { useState, useEffect } from "react";
@@ -39,7 +38,7 @@ const Home = () => {
 
     setBalance(balance + +value);
 
-    // до бази 
+    // до бази
     addItem(transaction);
     // console.log(transactions, 999);
   };

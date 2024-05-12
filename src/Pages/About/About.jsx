@@ -1,7 +1,11 @@
 import { motion } from 'framer-motion';
+import { useContext } from 'react';
 
-     
+import СurencyContext from "../../provaiders/context/context.js";
+
+
 const About = () => {
+  const currensy2 = useContext(СurencyContext);
     return(
         <motion.div
         className="box"
@@ -13,7 +17,7 @@ const About = () => {
           ease: [0, 0.71, 0.2, 1.01],
         }}
       >
-        "About"
+       <h1>ЦІКАВИНКИ ПРО НАС</h1>
         </motion.div>
     )
 };

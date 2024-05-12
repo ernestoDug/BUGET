@@ -19,6 +19,8 @@ import "normalize.css";
 import ErrorPage from "../ErrorPage";
 import { open } from "../utils/indexdb.js";
 import Loading from "./Loading/Loading.jsx";
+import СurencyContext from "../provaiders/context/context.js";
+// тепер їм обгорнемо ап роутер щоб контекст діставати 
 
 // Щоб відкласти завантаження коду цього компонента до його першого відтворення
 // щоб відкладений компонент, який ви імпортуєте, був експортований як defaultекспорт.
@@ -46,7 +48,7 @@ const  App = () =>  {
     // the side effect will only run when the props or state changed
  }, [ ])
 
-//  10/05 24 58 мин
+//  10/05 24  210 мин
 
 
   return (
@@ -68,7 +70,7 @@ const  App = () =>  {
       />
 
      { loading ? (<> <Loading/>  </>) :( 
-
+<СurencyContext.Provider>
           <BrowserRouter>
         <Routes>
           <Route>
@@ -84,6 +86,7 @@ const  App = () =>  {
           </Route>
         </Routes>
       </BrowserRouter>
+      </СurencyContext.Provider>
      )}
     </>
    );
