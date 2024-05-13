@@ -1,11 +1,11 @@
 import { motion } from 'framer-motion';
 import { useContext } from 'react';
 
-import СurencyContext from "../../provaiders/context/context.js";
+// import AppContext from "../../provaiders/context/context.js";
 
 
 const About = () => {
-  const currensy2 = useContext(СurencyContext);
+  // const currensy2 = useContext(AppContext);
     return(
         <motion.div
         className="box"

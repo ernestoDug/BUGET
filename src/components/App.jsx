@@ -19,7 +19,7 @@ import "normalize.css";
 import ErrorPage from "../ErrorPage";
 import { open } from "../utils/indexdb.js";
 import Loading from "./Loading/Loading.jsx";
-import СurencyContext from "../provaiders/context/context.js";
+import {AppContext} from "../provaiders/context/context.js";
 // тепер їм обгорнемо ап роутер щоб контекст діставати 
 
 // Щоб відкласти завантаження коду цього компонента до його першого відтворення
@@ -35,8 +35,6 @@ const  App = () =>  {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // підключаємось до бд стан лоадинг та вивід лоудера потрібен поки ще база за піделючена бо помилка 
-
     open().then(() => {
       setLoading( loading === false
       )
@@ -45,10 +43,12 @@ const  App = () =>  {
   }).catch(() => {
       console.error('Помилка')
   });
+    // підключаємось до бд стан лоадинг та вивід лоудера потрібен поки ще база за піделючена бо помилка 
+
     // the side effect will only run when the props or state changed
  }, [ ])
 
-//  10/05 24  210 мин
+//  10/05 24  227 мин
 
 
   return (
@@ -70,7 +70,8 @@ const  App = () =>  {
       />
 
      { loading ? (<> <Loading/>  </>) :( 
-<СurencyContext.Provider>
+<AppContext.Provider value= {{ currensy: 'UAH'}}>
+  {/* У ПРОВАЙДЕР ТРЕБА ПЕРЕДАВАТИ ВЕЛ*Ю */}
           <BrowserRouter>
         <Routes>
           <Route>
@@ -86,7 +87,7 @@ const  App = () =>  {
           </Route>
         </Routes>
       </BrowserRouter>
-      </СurencyContext.Provider>
+      </AppContext.Provider>
      )}
     </>
    );
