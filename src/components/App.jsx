@@ -48,7 +48,7 @@ const  App = () =>  {
     // the side effect will only run when the props or state changed
  }, [ ])
 
-//  10/05 24  227 мин
+//  10/05 24  230 мин
 
 
   return (

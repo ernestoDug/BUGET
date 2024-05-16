@@ -1,3 +1,3 @@
 export default {
-    curency: 'UAH',
-}
+  currency: "UAH",
+};
