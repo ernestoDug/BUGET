@@ -38,6 +38,11 @@ const Navigation = () => {
     Про...
 </ButtonStyle>    
     </li>
+    <li>
+    <ButtonStyle onClick={() => navigate('settings', { replace: false })}>
+Налаштування
+</ButtonStyle>    
+</li>
 </UlNavigateStyle>
 </nav>
     )

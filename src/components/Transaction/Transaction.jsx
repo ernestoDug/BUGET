@@ -1,6 +1,10 @@
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 // npm install framer-motion
+import { useContext } from "react";
+import { AppContext } from "../../provaiders/context/context";
+
+
 import { LiStyle } from "./Transaction.module";
 
 // npx storybook@latest init
@@ -9,6 +13,8 @@ import { LiStyle } from "./Transaction.module";
 // зразок в навва сторис джиек икс тільки воно ніхрена не працює
 
 const Tranaction = ({ value = 0, date = "", comment = "" }) => {
+  const state = useContext(AppContext);
+
   return (
     <motion.div
       className="box"
@@ -23,7 +29,7 @@ const Tranaction = ({ value = 0, date = "", comment = "" }) => {
       {/* // пропсом велю дали стайл компоненту щоб колір змінбвати в стилях */}
       <LiStyle value={value}>
         <br></br>
-        <p>Значення: {value}</p>
+        <p>Значення: {value.toFixed(2)}, {state.currensy}</p>
         <p>Дата: {date}</p>
         <p>Кометар: {comment}</p>
       </LiStyle>

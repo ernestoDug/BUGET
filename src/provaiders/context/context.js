@@ -18,7 +18,7 @@ const myReduser = (state, action) => {
       return defoultContex;
     }
     default: {
-      throw new Error('No action');
+      throw new Error("No action");
     }
   }
 };
